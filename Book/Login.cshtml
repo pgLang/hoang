@@ -1,0 +1,41 @@
+﻿@model ThuVienOnline.Models.NguoiDung
+@{
+    ViewData["Title"] = "Login";
+}
+
+<head>
+    
+    <title>Đăng Nhập</title>
+    <link rel="stylesheet" href="~/css/css_login.css">
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <div class="row">
+        <div class="col-md-8">
+            <form asp-action="Login" class="container-login">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="login">
+                    <h1 class="login-heading">Đăng Nhập</h1>
+                    <hr />
+                    <div class="form-group">
+                    <label asp-for="Email" class="control-label login-label"></label>
+                    <input asp-for="Email" class="form-control login-input" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                    <label asp-for="Password" class="control-label login-label"></label>
+                    <input asp-for="Password" type="password" class="form-control login-input" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+                    <button type="submit" class="login-btn btn btn-primary">Login</button>
+                    <p class="register-question">
+                        <span>Bạn chưa có tài khoản ?</span>
+                        <a asp-action="Register" asp-controller="Book" class="register-text">Đăng ký</a>
+                    </p>
+                </div>
+            </form>
+        </div>
+    </div>
+     
+</body>
+

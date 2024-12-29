@@ -1,0 +1,80 @@
+﻿@model ThuVienOnline.Models.Book
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<style>
+    .img-book {
+        width: 400px;
+        height: 700px;
+    }
+</style>
+<h1>Chi Tiết</h1>
+
+<h4>Sách</h4>
+<hr />
+
+<form asp-action="Delete">
+    <div class="row">
+        <div class="col-md-6">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="row">
+                <div class="col-md-6 form-group">
+                    <label asp-for="BookName" class="control-label">Tên Sách</label>
+                    <input asp-for="BookName" readonly class="form-control" />
+                    <span asp-validation-for="BookName" class="text-danger"></span>
+                </div>
+                <div class=" col-md-6 form-group">
+                    <label asp-for="TacGia" class="control-label">Tác Giả</label>
+                    <input asp-for="TacGia" readonly class="form-control" />
+                    <span asp-validation-for="TacGia" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Mota" class="control-label">Mô Tả</label>
+                <textarea asp-for="Mota" readonly class="form-control"></textarea>
+                <span asp-validation-for="Mota" class="text-danger"></span>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 form-group">
+                    <label asp-for="NgayPh" class="control-label">Ngày Phát Hành</label>
+                    <input asp-for="NgayPh" readonly class="form-control" />
+                    <span asp-validation-for="NgayPh" class="text-danger"></span>
+                </div>
+                <div class=" col-md-6 form-group">
+                    <label asp-for="SoTrang" class="control-label">Số Trang</label>
+                    <input asp-for="SoTrang" readonly class="form-control" />
+                    <span asp-validation-for="SoTrang" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 form-group">
+                    <label asp-for="TheLoai" class="control-label">Thể Loại</label>
+                    <input asp-for="TheLoai" readonly class="form-control" />
+                    <span asp-validation-for="TheLoai" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 form-group">
+                        <input type="hidden" asp-for="BookId" />
+                        <input type="submit" value="Delete" class="btn btn-danger" />
+                    <div>
+                        <a asp-action="Index">Quay lại</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group img-book">
+                <label asp-for="Anh" class="control-label">Ảnh</label>
+                <img src="@Html.DisplayFor(model => model.Anh)" />
+            </div>
+        </div>
+    </div>
+</form>
+

@@ -1,0 +1,82 @@
+﻿@using Microsoft.AspNetCore.Http
+@using ThuVienOnline.Extension
+@using ThuVienOnline.Models
+@model IEnumerable<ThuVienOnline.Models.Book>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Danh Sách Sách Trong Thư Viện</h4>
+                <p>
+                    <a class="btn btn-primary" asp-action="Create">Thêm Sách</a>
+                </p>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead class=" text-primary">
+                            <tr>
+                                <th>
+                                    Ảnh
+                                </th>
+                                <th>
+                                    Tên Sách
+                                </th>
+                                <th>
+                                    Tác Giả
+                                </th>
+                                <th>
+                                    Số Trang
+                                </th>
+                                <th>
+                                    Ngày phát hành
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        <div class="d-flex px-2">
+                                            <div>
+                                                <img src="@Html.DisplayFor(modelItem => item.Anh)" class="avatar avatar-sm me-2">
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="my-auto">
+                                            <h6 class="mb-0 text-sm font-weight-bold" style="font-size:12px;">@Html.DisplayFor(modelItem => item.BookName)</h6>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.TacGia)
+                                    </td>
+                                    
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.SoTrang)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.NgayPh)
+                                    </td>
+                                    <td>
+                                        @if (Context.Session.GetString("MaKh") != null){
+                                            <a asp-action="Details" asp-route-id="@item.BookId" class="btn btn-primary" style="font-size:12px;">Xem</a>
+                                            <a asp-action="Delete" asp-route-id="@item.BookId" class="btn btn-danger" style="font-size:12px;">Xóa</a>
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
